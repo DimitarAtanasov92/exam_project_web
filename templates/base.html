@@ -1,0 +1,60 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Fashion For Everyone</title>
+  <link rel="stylesheet"
+          href="/static/css/style.css">
+    <link rel="icon" href="/static/images/logo.png" title="Fashion For Everyone">
+</head>
+<body>
+  <nav class="navbar">
+    <div>
+      <a href="#">Home</a>
+      <a href="#">Goods</a>
+      <a href="#">News</a>
+    </div>
+    <div>
+      <a href="#">About Us</a>
+      <a href="#">Support</a>
+    </div>
+  </nav>
+  <div style="position: absolute; margin-left: 0%; padding-top: 20px;">
+    <img src='https://i.pinimg.com/736x/bb/17/58/bb1758ead433950a75f4a4813ce4de6a.jpg' alt="Left Photo" style="width: 200px; height: 600px;" id="img1">
+  </div>
+  <div style="position: absolute; margin-left: 85%; padding-top: 20px;">
+      <img src='https://i.pinimg.com/736x/bb/17/58/bb1758ead433950a75f4a4813ce4de6a.jpg' alt="Right Photo" style="width: 200px; height: 600px;" id="img2">
+  </div>
+  <div class="content" style="padding: 30px">
+      {% block content %}
+      {% endblock %}
+  </div>
+  <script>
+    let imageUrls = [
+      'https://media.voguebusiness.com/photos/621e06bf17b9c2e9b062bc0b/2:3/w_2560%2Cc_limit/reliance-acquisition-voguebus-full-getty-credit-mar-22-story.jpg',
+      'https://cdncloudcart.com/10876/products/images/8288/damska-rokla-veronika-9600-vanya-fashion-copy-636fe552e8e9d_1920x1920.jpeg?1668277607',
+      'https://i.pinimg.com/736x/bb/17/58/bb1758ead433950a75f4a4813ce4de6a.jpg',
+      'https://heartoffashion.ca/wp-content/uploads/2022/09/Heart-of-Fashion-Mobile-Hero-Image-Raised.jpg'
+        ];
+    let imageIndex = 0;
+    let sliderImage = document.getElementById('img1');
+     setInterval(() => {
+      imageIndex = (imageIndex + 1) % imageUrls.length;
+      sliderImage.src = imageUrls[imageIndex];
+    }, 2000);
+     let sliderImage2 = document.getElementById('img2');
+     setInterval(() => {
+      imageIndex = (imageIndex + 1) % imageUrls.length;
+      sliderImage2.src = imageUrls[imageIndex];
+    }, 2000);
+  </script>
+  <footer class="footer">
+    <a href="https://www.facebook.com">Facebook</a> |
+    Phone: 123-456-789 | Email: info@example.com
+  </footer>
+</body>
+</html>

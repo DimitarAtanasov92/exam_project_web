@@ -1,0 +1,41 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #333;
+  padding: 10px;
+}
+.navbar a {
+  text-decoration: none;
+  color: #fff;
+  margin: 0 10px;
+  font-weight: bold;
+}
+/* CSS for photo spot */
+/*.photo-spot {*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  padding: 20px;*/
+/*}*/
+/* CSS for content block */
+.content {
+  margin-left: 6.5cm;
+  height: 650px;
+  width: 700px;
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+  font-size: 20px;
+  background-color: #f1f1f1;
+}
+/* CSS for footer */
+.footer {
+  background-color: #333;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+}
+.footer a {
+  text-decoration: none;
+  color: #fff;
+  margin: 0 10px;
+}
