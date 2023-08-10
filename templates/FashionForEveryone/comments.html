@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+<form method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <button type="submit">Submit</button>
+</form>
+    {% else %}
+        <a href="{% url "login_user" %}">Need to login</a>
+    {% endif %}
+<a href="{% url "news" %}" class="back-button">Back to News</a>
+{% endblock %}

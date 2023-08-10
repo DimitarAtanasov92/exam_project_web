@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+    <style>
+    h2 {
+      margin: 0;
+    }
+    form {
+      display: grid;
+      gap: 10px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    label {
+      font-weight: bold;
+    }
+    input[type="text"],
+    textarea,
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button[type="submit"] {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button[type="submit"]:hover {
+      background-color: #555;
+    }
+    </style>
+        <h2>Contact Support</h2>
+    <form method="post">
+      <div>
+        <label for="{{ form.title.id_for_label }}">Title:</label>
+        {{ form.title }}
+      </div>
+      <div>
+        <label for="{{ form.description.id_for_label }}">Description:</label>
+        {{ form.description }}
+      </div>
+      <div>
+        <label for="{{ form.email.id_for_label }}">Email:</label>
+        {{ form.email }}
+      </div>
+      {% csrf_token %}
+      <button type="submit">Submit</button>
+    </form>
+{% endblock %}

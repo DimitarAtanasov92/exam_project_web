@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+      <title>User Registration</title>
+  <style>
+    /* Add your custom styles here */
+    form {
+      width: 300px;
+      margin: 0 auto;
+    }
+     label {
+      display: block;
+      margin-bottom: 10px;
+    }
+     input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+     input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+    }
+     input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+      .register-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+   .register-button:hover {
+    background-color: #45a049;
+  }
+  </style>
+    <form method="post">
+    {{ form }}
+    {% csrf_token %}
+    <div>
+        <button class="register-button">Register</button>
+    </div>
+  </form>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+      <title>Profile Details</title>
+  <style>
+    /* Add your custom styles here */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+    .container {
+      width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto;
+      display: block;
+      object-fit: cover;
+    }
+    .profile-details {
+      margin-top: 20px;
+    }
+    .profile-details label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .profile-details p {
+      margin: 0;
+    }
+    button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  </style>
+    <div class="container">
+    <h2>Profile Details</h2>
+        {% if profile.img %}
+    <img class="profile-img" src="{{ profile.img.url }}" alt="Profile Image">
+        {% else %}
+        <img src="https://icon-library.com/images/windows-10-circle-icon/windows-10-circle-icon-29.jpg" alt="no image" style="width: 4cm; height: 4cm">
+        {% endif %}
+    <div class="profile-details">
+      <label>First Name:</label>
+      <p>{{ profile.first_name }}</p>
+      <label>Last Name:</label>
+      <p>{{ profile.last_name }}</p>
+      <label>Age:</label>
+      <p>{{ profile.age }}</p>
+      <label>Email:</label>
+      <p>{{ profile.email }}</p>
+        <button><a href="{% url "update_user" pk=user.pk %}">Edit</a></button>
+        <button><a href="{% url "delete_user" pk=user.pk %}">Delete</a></button>
+    </div>
+  </div>
+{% endblock %}

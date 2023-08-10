@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+    <p>Welcome to our fashion website! We are a team of fashion enthusiasts who are passionate about bringing you the latest trends and styles. Our
+        <a href="{% url 'news' %}">news page</a> is your go-to source for all things fashion, where you can stay up-to-date on the latest industry news, style tips, and fashion events.
+
+Our <a href="{% url "products_list" %}">product page</a> is where you can browse and shop our carefully curated selection of clothing, shoes, and accessories. We offer a wide range of styles to fit any occasion, from casual wear to formal attire. Our products are made with high-quality materials and designed to make you look and feel your best.
+
+At our fashion website, we believe that fashion is more than just clothing - it's a form of self-expression. That's why we're committed to providing you with the best products and resources to help you express your unique style. Whether you're looking for inspiration or shopping for your next outfit, we've got you covered.</p>
+{% endblock %}

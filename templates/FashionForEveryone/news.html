@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+     <style>
+  .news-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+   .news-image {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+   .news-title {
+    font-size: 18px;
+    color: #333;
+    margin: 0;
+  }
+   .button-details {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+</style>
+{% for new in news_list %}
+  <div class="news-item">
+    <img src="{{ new.img.url }}" alt="image" class="news-image">
+    <h3 class="news-title">{{ new.title }}</h3>
+    <a href="{% url "news_details" new.pk %}" class="button-details">Details</a>
+  </div>
+{% endfor %}
+    {% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}&search={{ search }}">&lt;</a>
+{% endif %}
+    {{ page_obj.number }} / {{ paginator.num_pages }}
+{% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}&search={{ search }}">&gt;</a>
+{% endif %}
+{% endblock %}
