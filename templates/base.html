@@ -14,15 +14,23 @@
 <body>
   <nav class="navbar">
     <div>
-      <a href="#">Home</a>
-      <a href="#">Goods</a>
-      <a href="#">News</a>
+      <a href="{% url "index" %}">Home</a>
+      <a href="{% url "products_list" %}">Goods</a>
+      <a href="{% url "news" %}">News</a>
     </div>
     <div>
-      <a href="#">About Us</a>
-      <a href="#">Support</a>
+      <a href="{% url "about_us" %}">About Us</a>
+      <a href="{% url "support" %}">Support</a>
+        {% if request.user.is_authenticated %}
+            <a href="{% url "details_user" pk=user.pk %}">Profile</a>
+            <a href="{% url "logout_user" %}">Logout</a>
+        {% else %}
+            <a href="{% url "register_user" %}">Registration</a>
+            <a href="{% url "login_user" %}">Login</a>
+        {% endif %}
     </div>
   </nav>
+  <div id="content-wrap">
   <div style="position: absolute; margin-left: 0%; padding-top: 20px;">
     <img src='https://i.pinimg.com/736x/bb/17/58/bb1758ead433950a75f4a4813ce4de6a.jpg' alt="Left Photo" style="width: 200px; height: 600px;" id="img1">
   </div>
@@ -32,6 +40,7 @@
   <div class="content" style="padding: 30px">
       {% block content %}
       {% endblock %}
+  </div>
   </div>
   <script>
     let imageUrls = [
@@ -52,7 +61,7 @@
       sliderImage2.src = imageUrls[imageIndex];
     }, 2000);
   </script>
-  <footer class="footer">
+  <footer class="footer" style="margin-top: auto">
     <a href="https://www.facebook.com">Facebook</a> |
     Phone: 123-456-789 | Email: info@example.com
   </footer>

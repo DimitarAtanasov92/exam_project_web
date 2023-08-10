@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 from django.urls import reverse_lazy
@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "exam_project_web.FashionForEveryone",
-    "exam_project_web.auth_users"
+    "exam_project_web.auth_users",
+    "exam_project_web.suport",
+    "exam_project_web.products"
 ]
 
 MIDDLEWARE = [
@@ -133,7 +135,10 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
 LOGOUT_REDIRECT_URL = reverse_lazy("login_user")
-LOGIN_REDIRECT_URL = reverse_lazy("register_user")
+LOGIN_REDIRECT_URL = reverse_lazy("index")
 LOGIN_URL = reverse_lazy("login_user")
-AUTH_USER_MODEL = "auth_demos.AppUser"
+AUTH_USER_MODEL = "auth_users.AppUser"

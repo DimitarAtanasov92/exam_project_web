@@ -14,11 +14,7 @@ from exam_project_web.FashionForEveryone.models import UserModel, Profile
 # Create your views here.
 
 class RegisterUserForm(auth_forms.UserCreationForm):
-    content = forms.BooleanField()
-    first_name = forms.CharField(
-        max_length=30,
-        required=True,
-    )
+
     password2 = forms.CharField(
         label=_("Password confirmation"),
         widget=forms.PasswordInput(attrs={"autocomplete": "new-password"}),
@@ -33,7 +29,7 @@ class RegisterUserForm(auth_forms.UserCreationForm):
     def save(self, commit=True):
         user = super().save(commit)
 
-        profile = Profile(first_name=self.cleaned_data["first_name"],
+        profile = Profile(email=self.cleaned_data["email"],
                           user=user, )
         if commit:
             profile.save()
@@ -46,9 +42,9 @@ class RegisterUserForm(auth_forms.UserCreationForm):
 
 
 class RegisterUserView(views.CreateView):
-    template_name = "register.html"
+    template_name = "auth_users/register.html"
     form_class = RegisterUserForm
-    success_url = reverse_lazy("register_user")
+    success_url = reverse_lazy("index")
 
     def form_valid(self, form):
         result = super().form_valid(form)
@@ -57,7 +53,7 @@ class RegisterUserView(views.CreateView):
 
 
 class LoginUserView(auth_views.LoginView):
-    template_name = "login.html"
+    template_name = "auth_users/login.html"
 
 
 class LogoutUserView(auth_views.LogoutView):
@@ -72,10 +68,20 @@ def func_view(request):
     pass
 
 
-class ViewWithPermission(auth_mixins.PermissionRequiredMixin, views.TemplateView):
-    template_name = "user_list.html"
+class ProfileDetailView(views.DetailView):
+    model = Profile
+    template_name = 'auth_users/profile_detail.html'
 
 
-class UserListView(auth_mixins.LoginRequiredMixin, views.ListView):
+class ProfileDeleteView(views.DeleteView):
     model = UserModel
-    template_name = "user_list.html"
+    template_name = 'auth_users/delete_profile.html'
+    success_url = reverse_lazy('index')
+
+
+class ProfileUpdateView(views.UpdateView):
+    model = Profile
+    fields = ["img", "first_name", "last_name", "age"]
+    template_name = 'auth_users/edit_profile.html'
+    success_url = reverse_lazy('index')
+
