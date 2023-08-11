@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from exam_project_web.FashionForEveryone.models import News, Comment, Profile
+from exam_project_web.FashionForEveryone.models import News, Comment, Profile, HomeDescription
 
 
 # Register your models here.
@@ -23,3 +23,7 @@ class ProfileAdmin(admin.ModelAdmin):
     list_filter = ["email", "first_name", "last_name", "age"]
 
 
+@admin.register(HomeDescription)
+class HomeDescriptionAdmin(admin.ModelAdmin):
+    list_display = ["text"]
+    list_filter = ["text"]
