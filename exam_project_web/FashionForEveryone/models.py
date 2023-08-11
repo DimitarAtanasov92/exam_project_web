@@ -42,3 +42,5 @@ class Comment(models.Model):
         ordering = ['-date_time_of_published']
 
 
+class HomeDescription(models.Model):
+    text = models.TextField(max_length=5000)

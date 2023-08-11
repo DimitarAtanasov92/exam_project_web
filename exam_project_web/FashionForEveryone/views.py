@@ -4,13 +4,18 @@ from django.views import generic as views
 from django.contrib.auth import mixins as auth_mixins
 
 from exam_project_web.FashionForEveryone.forms import CommentForm
-from exam_project_web.FashionForEveryone.models import News, Comment, Profile
+from exam_project_web.FashionForEveryone.models import News, Comment, Profile, HomeDescription
 
 
 # Create your views here.
 
+
 def home(request):
-    return render(request, 'FashionForEveryone/home.html')
+    description = HomeDescription.objects.all().first()
+    context = {
+        "description": description,
+    }
+    return render(request, 'FashionForEveryone/home.html', context=context)
 
 
 class NewsListView(views.ListView):
@@ -40,3 +45,5 @@ def add_comment(request, pk):
 
 class AboutUsView(views.TemplateView):
     template_name = 'FashionForEveryone/about_us.html'
+
+

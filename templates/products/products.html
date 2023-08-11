@@ -88,7 +88,6 @@
             <a href="{% url "products_buy" pk=product.pk%}" class="buy-button">Buy</a>
         </div>
     {% endfor %}
-
     <div class="pagination">
         {% if page_obj.has_previous %}
             <a href="?page={{ page_obj.previous_page_number }}&search={{ search }}">&lt;</a>
