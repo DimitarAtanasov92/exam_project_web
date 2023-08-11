@@ -72,6 +72,8 @@
             color: white;
         }
     </style>
+        <script>
+        </script>
 </head>
 <body>
     {% for product in object_list %}
@@ -81,8 +83,9 @@
             <p class="product-size">Size: {{ product.size }}</p>
             <p class="product-genre">Genre: {{ product.genre }}</p>
             <p class="product-quantity">Quantity: {{ product.quantity }}</p>
+            <p>Price: {{ product.price|floatformat:2 }}</p>
             <p class="product-description">{{ product.description }}</p>
-            <a href="#" class="buy-button">Buy</a>
+            <a href="{% url "products_buy" pk=product.pk%}" class="buy-button">Buy</a>
         </div>
     {% endfor %}
 

@@ -29,10 +29,10 @@ def add_comment(request, pk):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.to_photo = News.objects.get(id=pk)  # Replace <news_id> with the appropriate news ID
+            comment.to_photo = News.objects.get(id=pk)
             comment.to_user = Profile.objects.get(user=request.user)
             comment.save()
-            return redirect('news')  # Replace <news_id> with the appropriate news ID
+            return redirect('news')
     else:
         form = CommentForm()
     return render(request, 'FashionForEveryone/comments.html', {'form': form})
